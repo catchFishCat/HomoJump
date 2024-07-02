@@ -1,0 +1,6 @@
+{
+  "accessibilityCapabilities": [
+    "retrieve",
+    "gesture"
+  ]
+}

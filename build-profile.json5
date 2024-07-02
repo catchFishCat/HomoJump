@@ -1,0 +1,49 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\13477\\.ohos\\config\\default_HomoJump_KgrOQFTVyQh96bpGoXxu_WiPcPvgbCv3BFtpxboRUus=.cer",
+          "storePassword": "0000001BDB33434174A1FA464B66E1A4AA23368DDFC4B6BC03266324CCE815082137851C32E3F5997AE5B4",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B826B095D020D00AA0B74AA8284861150A8C7482C6788B6CCE15610F515FD5328040588233273D4",
+          "profile": "C:\\Users\\13477\\.ohos\\config\\default_HomoJump_KgrOQFTVyQh96bpGoXxu_WiPcPvgbCv3BFtpxboRUus=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\13477\\.ohos\\config\\default_HomoJump_KgrOQFTVyQh96bpGoXxu_WiPcPvgbCv3BFtpxboRUus=.p12"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS",
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
