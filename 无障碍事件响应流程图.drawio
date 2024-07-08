@@ -1,9 +1,48 @@
-<mxfile host="app.diagrams.net" modified="2024-07-08T12:01:47.722Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" version="24.6.4" etag="WSZbK7-YZEnmCvQwr5AV" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-08T12:59:40.420Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="jruqP4OSanfJ_6z_0Xkj" version="24.6.4" type="github">
   <diagram name="第 1 页" id="mRch_bNotFD4gkWUAfrk">
-    <mxGraphModel>
+    <mxGraphModel dx="973" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q1tYPHruLktqTawpmkdJ-1" target="Q1tYPHruLktqTawpmkdJ-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-1" value="开始（出现无障碍事件）" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q1tYPHruLktqTawpmkdJ-4" target="Q1tYPHruLktqTawpmkdJ-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-4" value="事件类型为页面内容变化？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-5" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="980" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q1tYPHruLktqTawpmkdJ-9" target="Q1tYPHruLktqTawpmkdJ-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-9" value="事件包名处于排除列表？" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="200" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q1tYPHruLktqTawpmkdJ-14" target="Q1tYPHruLktqTawpmkdJ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-14" value="距离上次内容变化事件&amp;lt;100ms或&lt;div&gt;距离上次应用变化事件&amp;gt;5000ms或&lt;/div&gt;&lt;div&gt;距离上次触发时间&amp;gt;3000ms&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="320" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="Q1tYPHruLktqTawpmkdJ-16" target="Q1tYPHruLktqTawpmkdJ-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-16" value="记录当前内容变化事件时间戳" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-18" value="Log一下事件类型、包名等信息" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="490" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Q1tYPHruLktqTawpmkdJ-20" value="遍历当前应用规则，判断并操作" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="560" width="160" height="40" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
