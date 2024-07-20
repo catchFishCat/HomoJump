@@ -1,6 +1,7 @@
 # HomoJump
 一款利用 HarmonyOS 无障碍能力 [Accessbility Kit](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/accessibilitykit-V5) 帮助用户使用手机的应用。
 可以通过导入配置规则，实现自定义的屏幕点击功能
+![](./example.png)
 
 ## 功能与实现进度
 
