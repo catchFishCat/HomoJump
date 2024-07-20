@@ -7,6 +7,7 @@ import {
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { promptAction } from '@kit.ArkUI';
 import { accessibility } from '@kit.AccessibilityKit';
+import { HashSet } from '@kit.ArkTS';
 
 interface Rect {
   left: number,
@@ -23,6 +24,8 @@ export default class AccessibilityManager {
   private static instance: AccessibilityManager;
   accessibleContext?: AccessibilityExtensionContext;
   currentPageElementArray: Array<AccessibilityElement> | null = null;
+  searching:boolean = false;
+  appSet:HashSet<string> =  new HashSet()
 
   static getInstance(): AccessibilityManager {
     if (!AccessibilityManager.instance) {
@@ -34,6 +37,10 @@ export default class AccessibilityManager {
   onStart(context: AccessibilityExtensionContext) {
     console.info(`AccessibilityManager onStart`);
     this.accessibleContext = context;
+    this.appSet.add('com.mcdonalds.cma.hm')//麦当劳
+    this.appSet.add('com.yumc.kfc.superapp')//肯德基
+    this.appSet.add('com.lucky.luckincoffee')//瑞幸咖啡
+    this.appSet.add('yylx.danmaku.bili')//哔哩哔哩
   }
 
   onStop() {
@@ -42,9 +49,17 @@ export default class AccessibilityManager {
   }
 
   async onEvent(accessibilityEvent: AccessibilityEvent): Promise<void> {
-    console.info(`AccessibilityManager onEvent`);
+    const element = accessibilityEvent.target
+    if(!element) return
+    const bundleName = await this.getAttributeValue(element, 'bundleName') as string
+    if(!bundleName) return
+    if(!this.appSet.has(bundleName)) return
+
     await this.getCurrentPageAllElement();
     await this.printAllElementInfo();
+
+    // console.info(`AccessibilityManager onEvent`);
+
     // switch (accessibilityEvent.eventType) {
     //   case 'rightThenDown':
     //   // 获取当前页面的所有节点
@@ -60,6 +75,7 @@ export default class AccessibilityManager {
   }
 
   async findAndJump() {
+    //
 
   }
 
@@ -70,18 +86,23 @@ export default class AccessibilityManager {
       console.error(`AccessibilityManager accessibleContext undefined`);
       return;
     }
+    if(this.searching)
+      return
     try {
+      this.searching = true
       rootElement = await this.accessibleContext?.getWindowRootElement();
       this.currentPageElementArray = []
       await this.getChildren(rootElement)
+      this.searching = false
     } catch (error) {
       console.error(`AccessibilityExtAbility Failed to getWindowRootElement. Cause:${JSON.stringify(error)}`);
+      this.searching = false
     }
   }
 
   async getElementWantedInfo(accessibilityElement: AccessibilityElement, wantedAttribute: ElementAttributeKeys[]):
     Promise<string | null> {
-    console.info(`AccessibilityUtils getElementAllInfo`);
+    // console.info(`AccessibilityUtils getElementAllInfo`);
     if (accessibilityElement === null) {
       console.error(`AccessibilityUtils accessibilityElement is null`);
       return null;
@@ -112,7 +133,7 @@ export default class AccessibilityManager {
 
   async getAttributeValue(accessibilityElement: AccessibilityElement, key: ElementAttributeKeys):
     Promise<attributeValues | null> {
-    console.info(`AccessibilityUtils getAttributeValue`);
+    // console.info(`AccessibilityUtils getAttributeValue`);
     let value: attributeValues;
     let keys = await accessibilityElement.attributeNames();
     let isExit = false;
@@ -142,9 +163,15 @@ export default class AccessibilityManager {
     for (let index = 0; index < this.currentPageElementArray.length; index++) {
       const element = this.currentPageElementArray[index]
       info = await this.getElementWantedInfo(element, wantedAttribute);
-      if (await this.getAttributeValue(element, 'text') === '跳过') {
+      const text = (await this.getAttributeValue(element, 'text')) as string
+      const bundleName = (await this.getAttributeValue(element, 'bundleName')) as string
+      if (text.includes('跳过')) {
         element.performAction('click')
         console.info('发现ElementInfo包含跳过，已点击')
+      }
+      if (text.includes('我知道了')) {
+        element.performAction('click')
+        console.info('发现ElementInfo包含我知道了，已点击')
       }
       console.info(`AccessibilityManager printElementInfo${info}`);
     }
