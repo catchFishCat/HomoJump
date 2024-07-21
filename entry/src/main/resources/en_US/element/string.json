@@ -10,15 +10,15 @@
     },
     {
       "name": "EntryAbility_label",
-      "value": "label"
+      "value": "Homojump"
     },
     {
       "name": "EntryAccessibilityExtAbility_desc",
-      "value": "description"
+      "value": "click the screen based on rules"
     },
     {
       "name": "EntryAccessibilityExtAbility_label",
-      "value": "label"
+      "value": "HomoJump"
     }
   ]
 }
